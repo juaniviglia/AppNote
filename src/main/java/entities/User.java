@@ -7,12 +7,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="users")
+@Data
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class User {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

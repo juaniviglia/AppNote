@@ -9,6 +9,7 @@ import entities.Category;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import services.CategoryService.CategoryService;
 import services.NoteService.NoteService;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DataLoader {
+public class DataLoader implements ApplicationRunner {
     @Autowired
     private NoteService noteService;
 
@@ -37,6 +38,7 @@ public class DataLoader {
     @Autowired
     private CategorysController categorysController;
 
+    @Override
     public void run(ApplicationArguments args) throws Exception{
         createUser();
         createCategory();
@@ -47,6 +49,7 @@ public class DataLoader {
         categories.add(3);
         categories.add(4);
         createNotes(categories);
+        System.out.println("ENTRE AL DATA LOADER");
     }
 
     private void createUser(){
