@@ -4,9 +4,13 @@ import common.EntityDtoConverter;
 import dtos.CategoryResponse;
 import entities.Category;
 import exceptions.CategoryAlreadyCreatedException;
+import exceptions.CategoryNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositories.CategoryRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -55,6 +59,23 @@ public class CategoryServiceImpl implements CategoryService{
             return true;
         }
 
+    }
+
+    @Override
+    public Category findById(Integer idCategory) {
+        if(categoryRepository.findById(idCategory).isPresent()){
+            return categoryRepository.findById(idCategory).get();
+        }
+        throw new CategoryNotFoundException("The ID does not match any category");
+    }
+
+    @Override
+    public List<Category> findByIds(List<Integer> idCategories) {
+        List<Category> categories = new ArrayList<>();
+        for(Integer i:idCategories){
+            categories.add(findById(i));
+        }
+        return categories;
     }
 
 }
