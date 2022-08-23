@@ -15,9 +15,13 @@
     <artifactId>AppNote</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>AppNote</name>
+    <description>Ensolvers challengue</description>
+
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
